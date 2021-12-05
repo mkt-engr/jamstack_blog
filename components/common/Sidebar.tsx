@@ -1,23 +1,27 @@
 import { VFC } from "react";
-const categoryList: string[] = [
-  "TypeScript",
-  "React",
-  "Vue",
-  "HTML",
-  "SCSS",
-  "CSS",
-];
 
 const Sidebar: VFC = () => {
+  const categoryList: string[] = [
+    "TypeScript",
+    "React",
+    "Vue",
+    "HTML",
+    "SCSS",
+    "CSS",
+  ];
   console.log({ categoryList });
   return (
     <div className="p-2 w-250  hidden lg:block">
-      <div className="p-3 rounded bg-gray-300">
+      <div className="p-3 rounded bg-gray-200">
         <h2 className="font-semibold">Category</h2>
         <ul>
           {categoryList.map((category, index) => {
             console.log(category);
-            return <li key={index.toString()}>{category}</li>;
+            return (
+              <li className="ml-2" key={index.toString()}>
+                {category}
+              </li>
+            );
           })}
         </ul>
       </div>

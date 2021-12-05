@@ -11,7 +11,7 @@ const Article: VFC<Blog> = (props) => {
   const { imgSrc, title, abstract, createdAt, updatedAt } = props;
 
   return (
-    <article className="p-4 flex space-x-4 bg-gray-200 rounded">
+    <article className="p-4 flex space-x-4 bg-gray-200 rounded shadow-md hover:shadow-lg transition-all transform translate-y-0 hover:-translate-y-px cursor-pointer ">
       <Image
         src={imgSrc}
         alt=""
