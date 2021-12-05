@@ -9,13 +9,15 @@ interface Props {
 }
 const Layout: VFC<Props> = ({ children, title }) => {
   return (
-    <div>
+    <>
       <Head>{title}</Head>
       <Header></Header>
-      <main>{children}</main>
-      <Sidebar></Sidebar>
+      <div className="flex">
+        <main>{children}</main>
+        <Sidebar></Sidebar>
+      </div>
       <Footer></Footer>
-    </div>
+    </>
   );
 };
 

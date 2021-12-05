@@ -1,7 +1,6 @@
 import { AppProps } from "next/app";
-import { VFC } from "react";
+import "../styles/globals.scss";
 
-import "../styles/globals.css";
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;
 };
