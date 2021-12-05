@@ -8,7 +8,7 @@ class Document extends NextDocument<Props> {
       <Html>
         <Head />
         {/* <body className="bg-gray-200"> */}
-        <body className="min-h-screen bg-red-600">
+        <body className="min-h-screen">
           <Main />
           <NextScript />
         </body>

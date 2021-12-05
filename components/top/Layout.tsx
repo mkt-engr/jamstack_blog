@@ -12,8 +12,8 @@ const Layout: VFC<Props> = ({ children, title }) => {
     <>
       <Head>{title}</Head>
       <Header></Header>
-      <div className="flex">
-        <main>{children}</main>
+      <div className="flex px-36 bg-gray-100">
+        <main className="flex-1">{children}</main>
         <Sidebar></Sidebar>
       </div>
       <Footer></Footer>
