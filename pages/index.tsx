@@ -34,6 +34,20 @@ const dummyBlogArticles: Blog[] = [
     createdAt: "2021/12/05",
     updatedAt: "2021/12/06",
   },
+  {
+    imgSrc: "https://picsum.photos/id/45/200/200",
+    title: "Title4",
+    abstract: "Abstract4",
+    createdAt: "2021/12/07",
+    updatedAt: "2021/12/08",
+  },
+  {
+    imgSrc: "https://picsum.photos/id/96/200/200",
+    title: "Title5",
+    abstract: "Abstract5",
+    createdAt: "2021/12/09",
+    updatedAt: "2021/12/10",
+  },
 ];
 
 const Home: VFC = () => {
