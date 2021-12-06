@@ -38,10 +38,3 @@ const Article: VFC<Blog> = (props) => {
 };
 
 export default Article;
-
-export const getStaticProps: GetStaticProps = async () => {
-  console.log("getStaticProps in index.tsx");
-  return {
-    props: {},
-  };
-};

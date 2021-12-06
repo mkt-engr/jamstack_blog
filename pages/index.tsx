@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Layout from "../components/top/Layout";
 import Article from "../components/top/Article";
-
+import { getAllArticles } from "../lib/articles";
 interface Blog {
   imgSrc: string;
   title: string;
@@ -14,14 +14,21 @@ interface Blog {
 }
 
 interface Props {
-  dummyBlogArticles: Blog[];
+  articles: Blog[];
 }
-const Home: VFC<Props> = ({ dummyBlogArticles }) => {
+const Home: VFC<Props> = ({ articles }) => {
+  console.log({ articles });
+  const a = articles.contents;
   return (
     <Layout>
       <div className="p-2 space-y-4">
-        {dummyBlogArticles.map((item, index) => {
-          return <Article key={index.toString()} {...item} />;
+        {a?.map((item, index) => {
+          // return <Article key={index.toString()} {...item} />;
+          return (
+            <div key={index.toString()}>
+              {item.title}:{item.createdAt}
+            </div>
+          );
         })}
       </div>
     </Layout>
@@ -69,8 +76,11 @@ export const getStaticProps: GetStaticProps = async () => {
       updatedAt: "2021/12/10",
     },
   ];
+
+  const articles = await getAllArticles();
+  console.log(articles.contents);
   return {
-    props: { dummyBlogArticles },
+    props: { articles },
     revalidate: 1,
   };
 };

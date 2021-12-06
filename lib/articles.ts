@@ -1,0 +1,11 @@
+import fetch from "node-fetch";
+
+export async function getAllArticles() {
+  // const res = await fetch(new URL(`${process.env.API_KEY}/blog`));
+  const res = await fetch(`${process.env.API_URL}/blog`, {
+    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY },
+  });
+  console.log({ res });
+  const articles = await res.json();
+  return articles;
+}
