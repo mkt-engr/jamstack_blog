@@ -12,7 +12,7 @@ const Layout: VFC<Props> = ({ children, title }) => {
     <>
       <Head>{title}</Head>
       <Header></Header>
-      <div className="flex px-36 bg-gray-100">
+      <div className="flex px-4 md:px-18 xl:px-36 bg-gray-100">
         <main className="flex-1">{children}</main>
         {false && <Sidebar></Sidebar>}
       </div>

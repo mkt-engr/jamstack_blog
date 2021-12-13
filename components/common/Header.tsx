@@ -5,13 +5,13 @@ import Link from "next/link";
 import { BsPersonCircle } from "react-icons/bs";
 const Header: VFC = () => {
   return (
-    <div className="px-36 py-1 flex bg-gray-100 mx-auto justify-center items-center">
+    <div className="px-4 md:px-36 py-1 flex bg-gray-100 mx-auto justify-center items-center">
       <Link href="/">
         <a href="">
-          <h1 className={`${styles.logo}`}>Mkt Memo</h1>
+          <h1 className={`${styles.logo} text-2xl md:text-4xl`}>Mkt Memo</h1>
         </a>
       </Link>
-      <ul className="flex ml-auto space-x-16">
+      <ul className="flex ml-auto space-x-8 sm:space-x-12 lg:space-x-16">
         <li>
           <Link href="/search">
             <a href="">
