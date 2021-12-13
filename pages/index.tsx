@@ -26,7 +26,7 @@ const Home: VFC<Props> = ({ articles }) => {
         {articles?.map((item, index) => {
           return (
             <Link href={`/${item.id}`} key={item.id}>
-              <a href="">
+              <a href="" className="block">
                 <Article {...item} />
               </a>
             </Link>
