@@ -3,7 +3,7 @@ import React from "react";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 
 const Blog = ({ article }) => {
-  return <div>ブログ詳細</div>;
+  return <div>{article.title}</div>;
 };
 
 export default Blog;
