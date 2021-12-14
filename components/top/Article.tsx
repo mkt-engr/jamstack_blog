@@ -13,7 +13,7 @@ interface Blog {
 const Article: VFC<Blog> = (props) => {
   const { imgSrc, title, abstract, createdAt, updatedAt, body, thumbnail } =
     props;
-  console.log({ thumbnail });
+  // console.log({ thumbnail });
   const { url, height, width } = thumbnail;
   return (
     <article className="p-2 sm:p-4 sm:flex block space-x-4 bg-gray-200 rounded shadow-md hover:shadow-lg transition-all transform translate-y-0 hover:-translate-y-px cursor-pointer text-center sm:text-left">

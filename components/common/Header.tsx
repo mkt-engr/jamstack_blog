@@ -5,7 +5,7 @@ import Link from "next/link";
 import { BsPersonCircle } from "react-icons/bs";
 const Header: VFC = () => {
   return (
-    <div className="px-4 md:px-36 py-1 flex bg-gray-100 mx-auto justify-center items-center">
+    <div className="px-4 md:px-36  py-10 flex bg-gray-100 mx-auto justify-center items-center">
       <Link href="/">
         <a href="">
           <h1 className={`${styles.logo} text-xl sm:text-2xl md:text-4xl`}>

@@ -19,7 +19,7 @@ interface Props {
   articles: Blog[];
 }
 const Home: VFC<Props> = ({ articles }) => {
-  console.log({ articles }, "::::index.tsx ");
+  // console.log({ articles }, "::::index.tsx ");
   return (
     <Layout>
       <div className="p-2 space-y-4">

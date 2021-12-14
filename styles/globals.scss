@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+// ブログ詳細のスタイル
+@layer base {
+  .blogContent {
+    h1 {
+      @apply text-4xl sm:text-5xl font-bold mt-8 mb-4;
+    }
+    h2 {
+      @apply mb-4 text-xl sm:text-2xl font-bold;
+    }
+    h3 {
+      @apply text-lg sm:text-xl;
+    }
+  }
+}

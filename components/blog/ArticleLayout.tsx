@@ -1,20 +1,21 @@
-import { ReactNode, VFC } from "react";
+import { VFC, ReactNode } from "react";
 import Head from "next/head";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import Sidebar from "../common/Sidebar";
+
 interface Props {
   children: ReactNode;
-  title?: string;
+  title: string;
 }
-const Layout: VFC<Props> = ({ children, title }) => {
+const ArticleLayout: VFC<Props> = ({ children, title = "title" }) => {
   return (
     <>
       <Head>
-        <title>MKT Memo</title>
+        <title>{title}</title>
       </Head>
-      <Header></Header>
-      <div className="flex px-4 md:px-18 xl:px-36 bg-gray-100">
+      <Header />
+      <div className="flex px-4 md:px-18 xl:px-36 bg-gray-100 blogContent">
         <main className="flex-1">{children}</main>
         {false && <Sidebar></Sidebar>}
       </div>
@@ -23,4 +24,4 @@ const Layout: VFC<Props> = ({ children, title }) => {
   );
 };
 
-export default Layout;
+export default ArticleLayout;

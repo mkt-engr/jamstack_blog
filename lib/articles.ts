@@ -5,7 +5,7 @@ export async function getAllArticles() {
   const res = await fetch(`${process.env.API_URL}/blog`, {
     headers: { "X-MICROCMS-API-KEY": process.env.API_KEY },
   });
-  console.log({ res }, "in getAllArticles");
+  // console.log({ res }, "in getAllArticles");
   const data = await res.json();
   return data;
 }
