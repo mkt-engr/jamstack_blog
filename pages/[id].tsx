@@ -2,15 +2,17 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
+import { formatYYYYMMDDdd } from "../lib/dayjs";
 
 const Blog = ({ article }) => {
   const { title, body, createdAt, updatedAt } = article;
+
   return (
     <ArticleLayout title={title}>
       <div className="p-4 md:p-12 bg-white rounded">
-        <div className="flex gap-10">
-          <div className="">createdAt : {createdAt}</div>
-          <div className="">updatedAt : {updatedAt}</div>
+        <div className="block md:flex gap-10">
+          <div className="">作成日 : {formatYYYYMMDDdd(createdAt)}</div>
+          <div className="">更新日 : {formatYYYYMMDDdd(updatedAt)}</div>
         </div>
         <div
           dangerouslySetInnerHTML={{
