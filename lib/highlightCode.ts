@@ -1,0 +1,4 @@
+/**
+ * コードをハイライトする
+ */
+export const highlightCode = () => {};
