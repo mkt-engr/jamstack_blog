@@ -3,10 +3,7 @@ import { JSDOM } from "jsdom";
 import Prism from "prismjs";
 import vm from "vm";
 
-/**
- * コードをハイライトする
- */
-export const highlightCode = () => {};
+
 
 export const createLoadPlugin = () => {
   const { window } = new JSDOM("");
@@ -42,7 +39,10 @@ export const highlight = (
 ): string => {
   const { window } = new JSDOM("");
   const pre = window.document.createElement("pre");
+  // const pre = window.document.getElementsByTagName("pre")[0];
+  console.log({code})
   const codeElm = window.document.createElement("code");
+  // const codeElm = window.document.getElementsByTagName("code")[0];
   pre.appendChild(codeElm);
   codeElm.textContent = code;
   codeElm.setAttribute(
@@ -52,5 +52,6 @@ export const highlight = (
       .join(" ")
   );
   Prism.highlightElement(codeElm);
+  console.log("pre.outerHTML",pre.outerHTML)
   return pre.outerHTML;
 };

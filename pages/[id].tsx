@@ -4,8 +4,6 @@ import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDDdd } from "../lib/dayjs";
 import cheerio from "cheerio";
-import hljs from "highlight.js";
-import "highlight.js/styles/hybrid.css";
 import Prism from "prismjs"; // step1
 import "prismjs/themes/prism.css"; // step2
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
@@ -41,7 +39,6 @@ export default Blog;
 // 静的生成のためのパスを指定します
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllArticleIds();
-  // console.log({ paths });
   return { paths, fallback: false };
 };
 
@@ -54,9 +51,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   loadPlugin("diff-highlight");
   loadPlugin("autolinker");
   loadPlugin("inline-color");
-  $("pre code").each((_, elm) => {
+  $("pre").each((_, elm) => {
     const a = highlight($(elm).text(), {
-      language: "javascript",
+      language: "css",
       lineNumbers: true,
     });
     $(elm).html(a);  
