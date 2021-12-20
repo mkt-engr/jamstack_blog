@@ -1,19 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
+import React, { VFC } from "react";
 import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDDdd } from "../lib/dayjs";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/hybrid.css";
-
-import {
-  highlightCode,
-  createLoadPlugin,
-  highlight,
-} from "../lib/highlightCode";
-
-const Blog = ({ article }) => {
+import { ARTICLE } from "../@types/microCMS/schema";
+interface Props {
+  article: ARTICLE;
+}
+const Blog: VFC<Props> = ({ article }) => {
   const { title, body, createdAt, updatedAt } = article;
 
   return (
@@ -42,8 +39,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+interface StaticProps {
+  props: {
+    article: ARTICLE;
+  };
+}
+interface ParamType {
+  params: {
+    id: string;
+  };
+}
+
+export async function getStaticProps({
+  params,
+}: ParamType): Promise<StaticProps> {
   const article = await getArticleById(params.id);
+  console.log(article, "::::::::::getStaticProps");
   const $ = cheerio.load(article.body);
 
   $("pre code").each((_, elm) => {
@@ -57,4 +68,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       article: { ...article, body: $.html() },
     },
   };
-};
+}

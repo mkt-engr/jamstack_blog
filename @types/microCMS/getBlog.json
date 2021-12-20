@@ -1,0 +1,18 @@
+{
+  "contents": [
+    {
+      "id": "zuyaptx8pd",
+      "createdAt": "2021-06-12T11:32:45.946Z",
+      "updatedAt": "2021-06-12T12:49:26.371Z",
+      "publishedAt": "2021-06-12T11:32:45.946Z",
+      "revisedAt": "2021-06-12T12:49:26.371Z",
+      "title": "３本目の記事",
+      "body": "<p>今日はMaterial UIを導入してみた。</p>",
+      "thumbnail": {
+        "url": "https://images.microcms-assets.io/assets/452be31222a9415fa1c0e72ace1a0a72/e3bb8e81901148f5a9841172b69dabce/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202021-06-09%209.20.19.png",
+        "height": 318,
+        "width": 1764
+      }
+    }
+  ]
+}

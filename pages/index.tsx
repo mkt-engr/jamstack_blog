@@ -6,28 +6,22 @@ import Image from "next/image";
 import Layout from "../components/top/Layout";
 import Article from "../components/top/Article";
 import { getAllArticles } from "../lib/articles";
-interface Blog {
-  id: string;
-  thumbnail: any;
-  title: string;
-  abstract: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import { ARTICLE } from "../@types/microCMS/schema";
 
 interface Props {
-  articles: Blog[];
+  articles: ARTICLE[];
 }
+
 const Home: VFC<Props> = ({ articles }) => {
   // console.log({ articles }, "::::index.tsx ");
   return (
     <Layout>
       <div className="p-2 space-y-4">
-        {articles?.map((item, index) => {
+        {articles?.map((article) => {
           return (
-            <Link href={`/${item.id}`} key={item.id}>
+            <Link href={`/${article.id}`} key={article.id}>
               <a href="" className="block">
-                <Article {...item} />
+                <Article {...article} />
               </a>
             </Link>
           );
@@ -39,7 +33,10 @@ const Home: VFC<Props> = ({ articles }) => {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async () => {
+interface Props {
+  articles: ARTICLE[];
+}
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const data = await getAllArticles();
 
   return {

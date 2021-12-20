@@ -1,20 +1,15 @@
 import { VFC } from "react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-interface Blog {
-  imgSrc: string;
-  title: string;
-  abstract: string;
-  createdAt: string;
-  updatedAt: string;
-  body: string;
-  thumbnail: string;
-}
-const Article: VFC<Blog> = (props) => {
-  const { imgSrc, title, abstract, createdAt, updatedAt, body, thumbnail } =
-    props;
-  // console.log({ thumbnail });
+import { ARTICLE } from "../../@types/microCMS/schema";
+import { formatYYYYMMDDdd } from "../../lib/dayjs";
+
+type Props = ARTICLE;
+
+const Article: VFC<Props> = (article) => {
+  const { title, createdAt, updatedAt, thumbnail } = article;
   const { url, height, width } = thumbnail;
+
   return (
     <article className="p-2 sm:p-4 sm:flex block space-x-4 bg-gray-200 rounded shadow-md hover:shadow-lg transition-all transform translate-y-0 hover:-translate-y-px cursor-pointer text-center sm:text-left">
       <Image
@@ -29,13 +24,15 @@ const Article: VFC<Blog> = (props) => {
           <h2 className="text-lg font-semibold text-black mb-0.5">{title}</h2>
         </div>
         <div className="">
-          <h3>{abstract}</h3>
+          <h3>{}</h3>
         </div>
-        <div className="">
-          <h3>Created At:{createdAt}</h3>
-        </div>
-        <div className="">
-          <h3>Updated At:{updatedAt}</h3>
+        <div className="sm:flex space-x-2 md:space-x-4">
+          <div className="">
+            <h3>作成日 : {formatYYYYMMDDdd(createdAt)}</h3>
+          </div>
+          <div className="">
+            <h3>更新日 : {formatYYYYMMDDdd(updatedAt)}</h3>
+          </div>
         </div>
         {/* <div
           className=""

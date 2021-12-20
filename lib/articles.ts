@@ -1,22 +1,27 @@
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
+import { ARTICLE, CONTENTS } from "../@types/microCMS/schema";
 
-export async function getAllArticles() {
+export const getAllArticles = async (): Promise<CONTENTS> => {
   // const res = await fetch(new URL(`${process.env.API_KEY}/blog`));
-  const res = await fetch(`${process.env.API_URL}/blog`, {
-    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY },
-  });
-  // console.log({ res }, "in getAllArticles");
-  const data = await res.json();
-  return data;
-}
 
-export async function getAllArticleIds() {
-  const res = await fetch(`${process.env.API_URL}/blog`, {
-    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY },
+  const res: Response = await fetch(`${process.env.API_URL}/blog`, {
+    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
+  });
+
+  const data: Promise<CONTENTS> = await res.json();
+  return data;
+};
+interface ArticleId {
+  params: {
+    id: string;
+  };
+}
+export const getAllArticleIds = async (): Promise<ArticleId[]> => {
+  const res: Response = await fetch(`${process.env.API_URL}/blog`, {
+    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
   });
   const data = await res.json();
-  const articles = data.contents;
-  // console.log(articles, ":::::::::getAllArticleIds");
+  const articles: ARTICLE[] = data.contents;
   return articles.map((article) => {
     return {
       params: {
@@ -24,13 +29,16 @@ export async function getAllArticleIds() {
       },
     };
   });
-}
+};
 
-export async function getArticleById(id: string) {
+// export const getArticleById: Promise<Props> = async (id: string) => {
+export async function getArticleById(id: string): Promise<ARTICLE> {
   // console.log({ id }, "in getArticleById");
-  const res = await fetch(`${process.env.API_URL}/blog/${id}`, {
-    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY },
+  const res: Response = await fetch(`${process.env.API_URL}/blog/${id}`, {
+    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
   });
-  const data = await res.json();
-  return data;
+
+  const article: Promise<ARTICLE> = await res.json();
+  console.log(article, ":::::::getArticleById");
+  return article;
 }
