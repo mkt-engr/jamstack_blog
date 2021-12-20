@@ -39,6 +39,5 @@ export async function getArticleById(id: string): Promise<ARTICLE> {
   });
 
   const article: Promise<ARTICLE> = await res.json();
-  console.log(article, ":::::::getArticleById");
   return article;
 }

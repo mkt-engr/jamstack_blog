@@ -54,7 +54,6 @@ export async function getStaticProps({
   params,
 }: ParamType): Promise<StaticProps> {
   const article = await getArticleById(params.id);
-  console.log(article, "::::::::::getStaticProps");
   const $ = cheerio.load(article.body);
 
   $("pre code").each((_, elm) => {
