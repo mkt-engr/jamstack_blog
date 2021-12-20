@@ -3,6 +3,7 @@ import React, { VFC } from "react";
 import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDDdd } from "../lib/dayjs";
+import { highlightByHighlightJs } from "../lib/highlightCode";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
 import "highlight.js/styles/hybrid.css";
@@ -54,17 +55,11 @@ export async function getStaticProps({
   params,
 }: ParamType): Promise<StaticProps> {
   const article = await getArticleById(params.id);
-  const $ = cheerio.load(article.body);
-
-  $("pre code").each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text());
-    $(elm).html(result.value);
-    $(elm).addClass("hljs");
-  });
+  const body = highlightByHighlightJs(article.body);
 
   return {
     props: {
-      article: { ...article, body: $.html() },
+      article: { ...article, body },
     },
   };
 }

@@ -2,7 +2,8 @@ import fs from "fs";
 import { JSDOM } from "jsdom";
 import Prism from "prismjs";
 import vm from "vm";
-
+import cheerio from "cheerio";
+import hljs from "highlight.js";
 /**
  * コードをハイライトする
  */
@@ -33,7 +34,7 @@ export const createLoadPlugin = () => {
   };
 };
 
-export const highlight = (
+export const highlightByPrism = (
   code: string,
   {
     language = "none",
@@ -53,4 +54,15 @@ export const highlight = (
   );
   Prism.highlightElement(codeElm);
   return pre.outerHTML;
+};
+
+export const highlightByHighlightJs = (content: string) => {
+  const $ = cheerio.load(content);
+
+  $("pre code").each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text());
+    $(elm).html(result.value);
+    $(elm).addClass("hljs");
+  });
+  return $.html();
 };
