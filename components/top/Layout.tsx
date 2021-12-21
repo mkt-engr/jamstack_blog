@@ -13,12 +13,14 @@ const Layout: VFC<Props> = ({ children, title }) => {
       <Head>
         <title>MKT Memo</title>
       </Head>
-      <Header></Header>
-      <div className="flex px-4 md:px-18 xl:px-36 bg-gray-100">
-        <main className="flex-1">{children}</main>
-        {false && <Sidebar></Sidebar>}
+      <div className="flex bg-gray-100 flex-col min-h-full">
+        <Header></Header>
+        <div className="flex px-4 md:px-18 xl:px-36 bg-gray-100">
+          <main className="flex-1">{children}</main>
+          {false && <Sidebar></Sidebar>}
+        </div>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
     </>
   );
 };

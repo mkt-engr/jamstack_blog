@@ -14,12 +14,14 @@ const ArticleLayout: VFC<Props> = ({ children, title = "title" }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <Header />
-      <div className="flex px-4 md:px-18 xl:px-36 bg-gray-100 blogContent">
-        <main className="flex-1">{children}</main>
-        {false && <Sidebar></Sidebar>}
+      <div className="flex bg-gray-100 flex-col min-h-screen">
+        <Header />
+        <div className="flex flex-1 px-4 md:px-18 xl:px-36 bg-gray-100 blogContent">
+          <main className="flex-1">{children}</main>
+          {false && <Sidebar></Sidebar>}
+        </div>
+        <Footer></Footer>
       </div>
-      <Footer></Footer>
     </>
   );
 };

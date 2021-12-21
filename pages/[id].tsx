@@ -1,11 +1,9 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths } from "next";
 import React, { VFC } from "react";
 import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDDdd } from "../lib/dayjs";
 import { highlightByHighlightJs } from "../lib/highlightCode";
-import cheerio from "cheerio";
-import hljs from "highlight.js";
 import "highlight.js/styles/hybrid.css";
 import { ARTICLE } from "../@types/microCMS/schema";
 interface Props {
@@ -51,9 +49,9 @@ interface ParamType {
   };
 }
 
-export async function getStaticProps({
+export const getStaticProps = async ({
   params,
-}: ParamType): Promise<StaticProps> {
+}: ParamType): Promise<StaticProps> => {
   const article = await getArticleById(params.id);
   const body = highlightByHighlightJs(article.body);
 
@@ -62,4 +60,4 @@ export async function getStaticProps({
       article: { ...article, body },
     },
   };
-}
+};
