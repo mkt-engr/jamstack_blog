@@ -16,7 +16,7 @@ const Home: VFC<Props> = ({ articles }) => {
   // console.log({ articles }, "::::index.tsx ");
   return (
     <Layout>
-      <div className="p-2 space-y-4">
+      <div className="py-2 space-y-4">
         {articles?.map((article) => {
           return (
             <Link href={`/${article.id}`} key={article.id}>
