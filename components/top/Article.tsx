@@ -11,7 +11,7 @@ const Article: VFC<Props> = (article) => {
   const { url, height, width } = thumbnail;
 
   return (
-    <article className="p-2 sm:p-4 sm:flex block space-x-4 bg-gray-200 rounded shadow-md hover:shadow-lg transition-all transform translate-y-0 hover:-translate-y-px cursor-pointer text-center sm:text-left">
+    <article className="p-2 sm:p-4 sm:flex block sm:space-x-4 bg-gray-200 rounded shadow-md hover:shadow-lg transition-all transform translate-y-0 hover:-translate-y-px cursor-pointer text-center sm:text-left">
       <div className="mx-auto md:mx-0 sm:flex">
         <Image
           src={url}
@@ -22,12 +22,12 @@ const Article: VFC<Props> = (article) => {
           objectFit="cover"
         />
       </div>
-      <div className="flex-1 space-y-2">
-        <div className="min-w-0 sm:pr-20_lg:pr-0_xl:pr-20">
+      <div className="flex-1 sm:space-y-2 gridContainer">
+        <div className="min-w-0 sm:pr-20_lg:pr-0_xl:pr-20 title">
           <h2 className="text-lg font-semibold text-black mb-0.5">{title}</h2>
         </div>
-        <div className="ellipsis">{abstract}</div>
-        <div className="sm:flex space-x-2 md:space-x-4 mt-auto">
+        <div className="ellipsis abstract">{abstract}</div>
+        <div className="sm:flex space-x-2 md:space-x-4 mt-auto date">
           <div className="ml-auto">
             <h3>作成日 : {formatYYYYMMDD(createdAt)}</h3>
           </div>

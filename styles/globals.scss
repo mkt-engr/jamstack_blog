@@ -16,13 +16,35 @@
     }
   }
 }
-html {
-  // line-height: 10;
-}
+
 .ellipsis {
   display: -webkit-box;
   overflow: hidden;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   word-break: break-word;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "title"
+    "abstract"
+    "date";
+}
+
+.title {
+  grid-area: title;
+}
+
+.abstract {
+  grid-area: abstract;
+}
+
+.date {
+  grid-area: date;
 }
