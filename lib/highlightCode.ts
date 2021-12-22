@@ -4,10 +4,6 @@ import Prism from "prismjs";
 import vm from "vm";
 import cheerio from "cheerio";
 import hljs from "highlight.js";
-/**
- * コードをハイライトする
- */
-export const highlightCode = () => {};
 
 export const createLoadPlugin = () => {
   const { window } = new JSDOM("");
@@ -56,6 +52,12 @@ export const highlightByPrism = (
   return pre.outerHTML;
 };
 
+/**
+ * シンタックスハイライトを行う
+ *
+ * @param content microCMSから受け取った記事
+ * @returns <pre><code></code></pre>をハイライトしたDOM
+ */
 export const highlightByHighlightJs = (content: string) => {
   const $ = cheerio.load(content);
 

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 // ブログ詳細のスタイル
 @layer base {
   .blogContent {
@@ -16,4 +15,14 @@
       @apply text-lg sm:text-xl;
     }
   }
+}
+html {
+  // line-height: 10;
+}
+.ellipsis {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
 }
