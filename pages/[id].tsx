@@ -21,8 +21,9 @@ const Blog: VFC<Props> = ({ article }) => {
   return (
     <ArticleLayout title={title}>
       <div className="p-4 md:p-12 bg-white rounded">
+        <div className="text-center text-4xl font-bold mb-2">{title}</div>
         <div className="block md:flex gap-10">
-          <div className="">作成日 : {formatYYYYMMDD(createdAt)}</div>
+          <div className="ml-auto">作成日 : {formatYYYYMMDD(createdAt)}</div>
           <div className="">更新日 : {formatYYYYMMDD(updatedAt)}</div>
         </div>
         <div
