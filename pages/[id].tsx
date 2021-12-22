@@ -2,22 +2,28 @@ import { GetStaticPaths } from "next";
 import React, { VFC } from "react";
 import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
-import { formatYYYYMMDDdd } from "../lib/dayjs";
+import { formatYYYYMMDD } from "../lib/dayjs";
 import { highlightByHighlightJs } from "../lib/highlightCode";
 import "highlight.js/styles/hybrid.css";
 import { ARTICLE } from "../@types/microCMS/schema";
+import { useRouter } from "next/router";
 interface Props {
   article: ARTICLE;
 }
 const Blog: VFC<Props> = ({ article }) => {
   const { title, body, createdAt, updatedAt } = article;
+  const router = useRouter();
+  const isReady = router.isReady;
 
+  if (!isReady) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <ArticleLayout title={title}>
       <div className="p-4 md:p-12 bg-white rounded">
         <div className="block md:flex gap-10">
-          <div className="">作成日 : {formatYYYYMMDDdd(createdAt)}</div>
-          <div className="">更新日 : {formatYYYYMMDDdd(updatedAt)}</div>
+          <div className="">作成日 : {formatYYYYMMDD(createdAt)}</div>
+          <div className="">更新日 : {formatYYYYMMDD(updatedAt)}</div>
         </div>
         <div
           dangerouslySetInnerHTML={{
