@@ -1,18 +1,12 @@
-import { VFC } from "react";
-import { GetStaticProps } from "next";
+import { InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
-import Head from "next/head";
-import Image from "next/image";
 import Layout from "../components/top/Layout";
 import Article from "../components/top/Article";
 import { getAllArticles } from "../lib/articles";
-import { ARTICLE } from "../@types/microCMS/schema";
 
-interface Props {
-  articles: ARTICLE[];
-}
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Home: VFC<Props> = ({ articles }) => {
+const Home: NextPage<Props> = ({ articles }) => {
   return (
     <Layout>
       <div className="py-2 space-y-4">
@@ -32,10 +26,7 @@ const Home: VFC<Props> = ({ articles }) => {
 
 export default Home;
 
-interface Props {
-  articles: ARTICLE[];
-}
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export const getStaticProps = async () => {
   const data = await getAllArticles();
 
   return {

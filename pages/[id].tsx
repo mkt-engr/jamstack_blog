@@ -36,6 +36,7 @@ export default Blog;
 // 静的生成のためのパスを指定します
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllArticleIds();
+  console.log(paths);
   return { paths, fallback: false };
 };
 
@@ -53,7 +54,9 @@ interface ParamType {
 export const getStaticProps = async ({
   params,
 }: ParamType): Promise<StaticProps> => {
+  console.log("::::::::::" + params.id);
   const article = await getArticleById(params.id);
+  console.log(article, "::::::::");
   const body = highlightByHighlightJs(article.body);
 
   return {
