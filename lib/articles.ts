@@ -2,8 +2,6 @@
 import { ARTICLE, CONTENTS } from "../@types/microCMS/schema";
 
 export const getAllArticles = async (): Promise<CONTENTS> => {
-  // const res = await fetch(new URL(`${process.env.API_KEY}/blog`));
-
   const res: Response = await fetch(`${process.env.API_URL}/blog`, {
     headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
   });
