@@ -13,7 +13,6 @@ interface Props {
 }
 
 const Home: VFC<Props> = ({ articles }) => {
-  // console.log({ articles }, "::::index.tsx ");
   return (
     <Layout>
       <div className="py-2 space-y-4">

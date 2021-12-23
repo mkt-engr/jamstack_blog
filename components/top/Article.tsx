@@ -11,7 +11,7 @@ const Article: VFC<Props> = (article) => {
   const { url, height, width } = thumbnail;
 
   return (
-    <article className="p-2 sm:p-4 sm:flex block sm:space-x-4 bg-gray-200 rounded shadow-md hover:shadow-lg transition-all transform translate-y-0 hover:-translate-y-px cursor-pointer text-center sm:text-left">
+    <article className="p-2 sm:p-4 sm:flex block sm:space-x-4  bg-white rounded shadow-lg hover:shadow-xl transition-all transform translate-y-0 hover:-translate-y-px cursor-pointer text-center sm:text-left">
       <div className="mx-auto md:mx-0 sm:flex">
         <Image
           src={url}

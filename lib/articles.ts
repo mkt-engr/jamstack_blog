@@ -31,9 +31,7 @@ export const getAllArticleIds = async (): Promise<ArticleId[]> => {
   });
 };
 
-// export const getArticleById: Promise<Props> = async (id: string) => {
 export async function getArticleById(id: string): Promise<ARTICLE> {
-  // console.log({ id }, "in getArticleById");
   const res: Response = await fetch(`${process.env.API_URL}/blog/${id}`, {
     headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
   });
