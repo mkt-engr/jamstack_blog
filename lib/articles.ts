@@ -3,7 +3,6 @@ import fetch from "node-fetch";
 import { ARTICLE, CONTENTS } from "../@types/microCMS/schema";
 
 export const getAllArticles = async (): Promise<CONTENTS> => {
-  console.log(process.env.API_KEY);
   const res = await axios.get(`${process.env.API_URL}/blog`, {
     headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
   });
