@@ -36,7 +36,6 @@ export default Blog;
 // 静的生成のためのパスを指定します
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllArticleIds();
-  console.log(paths);
   return { paths, fallback: false };
 };
 
