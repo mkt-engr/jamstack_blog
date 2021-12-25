@@ -13,7 +13,7 @@ const Home: NextPage<Props> = ({ articles }) => {
         {articles?.map((article) => {
           return (
             <Link href={`/${article.id}`} key={article.id}>
-              <a href="" className="block">
+              <a className="block">
                 <Article {...article} />
               </a>
             </Link>

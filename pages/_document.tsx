@@ -7,7 +7,7 @@ type Props = {};
 class Document extends NextDocument<Props> {
   render() {
     return (
-      <Html>
+      <Html lang="ja">
         <Head>
           {/* Google Analytics */}
           <GoogleAnalytics />
