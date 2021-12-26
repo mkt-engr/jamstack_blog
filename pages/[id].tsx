@@ -1,12 +1,10 @@
 import { GetStaticPaths } from "next";
 import React, { VFC } from "react";
-import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDD } from "../lib/dayjs";
 import { highlightByHighlightJs } from "../lib/highlightCode";
 import "highlight.js/styles/hybrid.css";
 import { ARTICLE } from "../@types/microCMS/schema";
-import { useRouter } from "next/router";
 import Layout from "../components/top/Layout";
 
 interface Props {
