@@ -15,12 +15,8 @@ const Layout: VFC<Props> = ({ children, title, isDisplaySidebar }) => {
       <Head>
         <title>{title}</title>
       </Head>
-
-      <div className={`${styles.contentsWrapper}  min-h-screen flex flex-col`}>
-        <div className={styles.headerWrapper}>
-          <Header />
-        </div>
-
+      <div className="flex bg-gray-100 flex-col min-h-screen">
+        <Header />
         <div className="flex flex-1 px-4 md:px-18 xl:px-36 bg-gray-100">
           <main className="flex-1">{children}</main>
           {isDisplaySidebar && <Sidebar />}
