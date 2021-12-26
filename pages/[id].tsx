@@ -1,5 +1,5 @@
 import { GetStaticPaths } from "next";
-import React, { VFC } from "react";
+import { VFC } from "react";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDD } from "../lib/dayjs";
 import { highlightByHighlightJs } from "../lib/highlightCode";
