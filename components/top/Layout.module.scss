@@ -1,19 +1,5 @@
-.contentsWrapper {
-  // display: grid;
-  // grid-template-columns: 1fr;
-  // grid-template-rows: auto 1fr auto;
-  // gap: 0px 0px;
-  // grid-template-areas:
-  //   "header"
-  //   "main"
-  //   "footer";
-}
-.footerWrapper {
-  // grid-area: footer;
-}
-.headerWrapper {
-  // grid-area: header;
-}
-.mainWrapper {
-  // grid-area: main;
+.contentWrapper {
+  --vh: 100vh;
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 }

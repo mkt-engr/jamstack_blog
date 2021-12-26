@@ -14,7 +14,7 @@ class Document extends NextDocument<Props> {
           <GoogleAnalytics />
           <Favicon />
         </Head>
-        <body className="min-h-screen leading-relaxed box-content">
+        <body className="leading-relaxed box-content">
           <Main />
           <NextScript />
         </body>
