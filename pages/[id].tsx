@@ -7,6 +7,8 @@ import { highlightByHighlightJs } from "../lib/highlightCode";
 import "highlight.js/styles/hybrid.css";
 import { ARTICLE } from "../@types/microCMS/schema";
 import { useRouter } from "next/router";
+import Layout from "../components/top/Layout";
+
 interface Props {
   article: ARTICLE;
 }
@@ -14,7 +16,7 @@ const Blog: VFC<Props> = ({ article }) => {
   const { title, body, createdAt, updatedAt } = article;
 
   return (
-    <ArticleLayout title={title}>
+    <Layout title={title}>
       <div className="p-4 md:p-12 bg-white rounded">
         <div className="text-center text-4xl font-bold mb-2">{title}</div>
         <div className="space-x-2 text-right">
@@ -27,7 +29,7 @@ const Blog: VFC<Props> = ({ article }) => {
           }}
         ></div>
       </div>
-    </ArticleLayout>
+    </Layout>
   );
 };
 
@@ -53,9 +55,7 @@ interface ParamType {
 export const getStaticProps = async ({
   params,
 }: ParamType): Promise<StaticProps> => {
-  console.log("::::::::::" + params.id);
   const article = await getArticleById(params.id);
-  console.log(article, "::::::::");
   const body = highlightByHighlightJs(article.body);
 
   return {

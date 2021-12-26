@@ -8,7 +8,7 @@ type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<Props> = ({ articles }) => {
   return (
-    <Layout>
+    <Layout title="Mkt Memo">
       <div className="py-2 space-y-4">
         {articles?.map((article) => {
           return (
