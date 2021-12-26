@@ -34,13 +34,11 @@ const Layout: VFC<Props> = ({ children, title, isDisplaySidebar }) => {
         id="js-contentWrapper"
       >
         <Header />
-        <div className="flex flex-1 px-4 md:px-18 xl:px-36 bg-gray-100">
-          <main className="flex-1">{children}</main>
+        <div className="_flex flex-1 px-4 md:px-18 xl:px-36 bg-gray-100">
+          <main className="_flex-1">{children}</main>
           {isDisplaySidebar && <Sidebar />}
         </div>
-        <div className={styles.footerWrapper}>
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </>
   );
