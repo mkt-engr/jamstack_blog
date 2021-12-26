@@ -1,17 +1,17 @@
-import { GetStaticPaths } from "next";
-import React, { VFC } from "react";
+import { GetStaticPaths, InferGetStaticPropsType, NextPage } from "next";
+import { VFC } from "react";
 import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDD } from "../lib/dayjs";
 import { highlightByHighlightJs } from "../lib/highlightCode";
 import "highlight.js/styles/hybrid.css";
 import { ARTICLE } from "../@types/microCMS/schema";
-import { useRouter } from "next/router";
 import Layout from "../components/top/Layout";
-interface Props {
-  article: ARTICLE;
-}
-const Blog: VFC<Props> = ({ article }) => {
+// interface Props {
+//   article: ARTICLE;
+// }
+type Props = InferGetStaticPropsType<typeof getStaticProps>;
+const Blog: NextPage<Props> = ({ article }) => {
   const { title, body, createdAt, updatedAt } = article;
 
   return (
@@ -40,23 +40,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-interface StaticProps {
-  props: {
-    article: ARTICLE;
-  };
-}
 interface ParamType {
   params: {
     id: string;
   };
 }
 
-export const getStaticProps = async ({
-  params,
-}: ParamType): Promise<StaticProps> => {
-  console.log("::::::::::" + params.id);
+export const getStaticProps = async ({ params }: ParamType) => {
   const article = await getArticleById(params.id);
-  console.log(article, "::::::::");
   const body = highlightByHighlightJs(article.body);
 
   return {
