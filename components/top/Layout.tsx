@@ -12,10 +12,13 @@ interface Props {
 const Layout: VFC<Props> = ({ children, title, isDisplaySidebar }) => {
   // resizeイベントの取得
 
+  //TODO:hooksにしたい。（Pure JS：https://coliss.com/articles/build-websites/operation/css/viewport-units-on-mobile.html）
+  //Hooks:https://usehooks.com/useWindowSize/
   useEffect(() => {
     window.addEventListener("resize", () => {
+      const contentWrapper = document.getElementById("js-contentWrapper");
       const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty("--vh", `${vh}px`);
+      contentWrapper!.style.setProperty("--vh", `${vh}px`);
     });
   }, []);
 
@@ -24,7 +27,10 @@ const Layout: VFC<Props> = ({ children, title, isDisplaySidebar }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <div className={`flex bg-gray-100 flex-col ${styles.contentWrapper}`}>
+      <div
+        className={`flex bg-gray-100 flex-col ${styles.contentWrapper}`}
+        id="js-contentWrapper"
+      >
         <Header />
         <div className="flex flex-1 px-4 md:px-18 xl:px-36 bg-gray-100">
           <main className="flex-1">{children}</main>
