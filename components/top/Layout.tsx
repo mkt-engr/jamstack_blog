@@ -1,4 +1,4 @@
-import { ReactNode, VFC } from "react";
+import { ReactNode, VFC, useEffect } from "react";
 import Head from "next/head";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
@@ -11,10 +11,13 @@ interface Props {
 }
 const Layout: VFC<Props> = ({ children, title, isDisplaySidebar }) => {
   // resizeイベントの取得
-  window.addEventListener("resize", () => {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty("--vh", `${vh}px`);
-  });
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    });
+  }, []);
 
   return (
     <>
