@@ -1,6 +1,6 @@
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from "next";
 import { VFC } from "react";
-import ArticleLayout from "../components/blog/ArticleLayout";
+// import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDD } from "../lib/dayjs";
 import { highlightByHighlightJs } from "../lib/highlightCode";
