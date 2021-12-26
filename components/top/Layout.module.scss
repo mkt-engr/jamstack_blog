@@ -1,19 +1,19 @@
 .contentsWrapper {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  gap: 0px 0px;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
+  // display: grid;
+  // grid-template-columns: 1fr;
+  // grid-template-rows: auto 1fr auto;
+  // gap: 0px 0px;
+  // grid-template-areas:
+  //   "header"
+  //   "main"
+  //   "footer";
 }
 .footerWrapper {
-  grid-area: footer;
+  // grid-area: footer;
 }
 .headerWrapper {
-  grid-area: header;
+  // grid-area: header;
 }
 .mainWrapper {
-  grid-area: main;
+  // grid-area: main;
 }

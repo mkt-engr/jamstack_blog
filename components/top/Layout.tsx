@@ -15,15 +15,15 @@ const Layout: VFC<Props> = ({ children, title, isDisplaySidebar }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <div className={`${styles.contentsWrapper} min-h-screen`}>
+
+      <div className={`${styles.contentsWrapper}  min-h-screen flex flex-col`}>
         <div className={styles.headerWrapper}>
           <Header />
         </div>
-        <div className={`${styles.mainWrapper} bg-gray-100`}>
-          <div className="flex px-4 md:px-18 xl:px-36 ">
-            <main className="flex-1">{children}</main>
-            {isDisplaySidebar && <Sidebar />}
-          </div>
+
+        <div className="flex flex-1 px-4 md:px-18 xl:px-36 bg-gray-100">
+          <main className="flex-1">{children}</main>
+          {isDisplaySidebar && <Sidebar />}
         </div>
         <div className={styles.footerWrapper}>
           <Footer />
