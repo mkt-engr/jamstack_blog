@@ -8,7 +8,7 @@ const Header: VFC = () => {
     <div className="w-full px-4 md:px-36 py-6 md:py-10 flex bg-gray-100 mx-auto justify-center items-center ">
       <Link href="/">
         <a className="block">
-          <h1 className={`${styles.logo} text-2xl md:text-4xl`}>Mkt Memo</h1>
+          <h1 className={`font-rock text-2xl md:text-4xl`}>Mkt Memo</h1>
         </a>
       </Link>
       {false && (
