@@ -1,5 +1,4 @@
 import { VFC } from "react";
-import styles from "./Header.module.scss";
 import Link from "next/link";
 
 import { BsPersonCircle } from "react-icons/bs";
