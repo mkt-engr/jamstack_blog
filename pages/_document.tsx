@@ -1,6 +1,5 @@
 import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 import Favicon from "../components/Favicons";
-import GoogleAnalytics from "../components/GoogleAnalytics";
 import { GA_TRACKING_ID } from "../lib/gtag";
 
 type Props = {};
