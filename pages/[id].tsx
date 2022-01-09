@@ -1,5 +1,6 @@
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from "next";
 import { VFC } from "react";
+import { useRouter } from "next/router";
 // import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDD } from "../lib/dayjs";
@@ -11,6 +12,10 @@ import Layout from "../components/top/Layout";
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Blog: NextPage<Props> = ({ article }) => {
+  const router = useRouter();
+  if (router.isFallback || !article) {
+    return <div>Loading...</div>;
+  }
   const { title, body, createdAt, updatedAt } = article;
 
   return (
@@ -36,7 +41,7 @@ export default Blog;
 // 静的生成のためのパスを指定します
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllArticleIds();
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 interface ParamType {
@@ -47,11 +52,27 @@ interface ParamType {
 
 export const getStaticProps = async ({ params }: ParamType) => {
   const article = await getArticleById(params.id);
+
+  if (!article) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  // if (!article) {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
+
   const body = highlightByHighlightJs(article.body);
 
   return {
     props: {
       article: { ...article, body },
     },
+    revalidate: 1,
   };
 };

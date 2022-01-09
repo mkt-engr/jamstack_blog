@@ -8,8 +8,10 @@ type Props = ARTICLE;
 
 const Article: VFC<Props> = (article) => {
   const { title, createdAt, updatedAt, thumbnail, abstract } = article;
-  const { url, height, width } = thumbnail;
-
+  // const { url, height, width } = thumbnail;
+  const url =
+    thumbnail?.url ||
+    "https://placehold.jp/c4c4c4/ffffff/150x150.png?text=No%20Image";
   return (
     <article className="p-2 sm:p-4 sm:flex block sm:space-x-4  bg-white rounded shadow-lg hover:shadow-xl transition-all transform translate-y-0 hover:-translate-y-px cursor-pointer text-center sm:text-left">
       <div className="mx-auto md:mx-0 sm:flex">
