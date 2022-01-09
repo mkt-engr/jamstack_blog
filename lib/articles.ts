@@ -1,11 +1,19 @@
-import axios, { AxiosResponse, AxiosError, Axios } from "axios";
-import fetch from "node-fetch";
+import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 import { ARTICLE, CONTENTS } from "../@types/microCMS/schema";
 
+/**
+ * 全ての記事を取得する
+ *
+ * @returns 全ての記事
+ */
 export const getAllArticles = async (): Promise<CONTENTS> => {
-  const res = await axios.get(`${process.env.API_URL}/blog`, {
+  const options: AxiosRequestConfig = {
+    url: `${process.env.API_URL}/blog`,
+    method: "GET",
     headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
-  });
+  };
+
+  const res = await axios(options);
 
   const { data }: { data: Promise<CONTENTS> } = res;
   return data;
@@ -15,10 +23,19 @@ interface ArticleId {
     id: string;
   };
 }
+/**
+ * 全ての記事のIDを取得する
+ *
+ * @returns 全ての記事のID
+ */
 export const getAllArticleIds = async (): Promise<ArticleId[]> => {
-  const res = await axios.get(`${process.env.API_URL}/blog`, {
+  const options: AxiosRequestConfig = {
+    url: `${process.env.API_URL}/blog`,
+    method: "GET",
     headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
-  });
+  };
+
+  const res = await axios(options);
   const articles: ARTICLE[] = res.data.contents;
   return articles.map((article) => {
     return {
@@ -29,17 +46,27 @@ export const getAllArticleIds = async (): Promise<ArticleId[]> => {
   });
 };
 
+/**
+ * IDをもとに記事を1件取得する
+ *
+ * @param id 記事のID
+ * @returns 記事1件
+ */
 export async function getArticleById(id: string): Promise<ARTICLE> {
-  let res: AxiosResponse<any, any>;
+  const options: AxiosRequestConfig = {
+    url: `${process.env.API_URL}/blog/${id}`,
+    method: "GET",
+    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
+  };
+
+  let res: AxiosResponse<ARTICLE>;
+
   try {
-    res = await axios.get(`${process.env.API_URL}/blog/${id}`, {
-      headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
-    });
+    res = await axios(options);
   } catch (e) {
-    if (axios.isAxiosError(e)) {
+    if (axios.isAxiosError(e) && e.response?.status === 400) {
       return e.response?.data;
     }
   }
-  const article: Promise<ARTICLE> = res!.data;
-  return article;
+  return res!.data;
 }
