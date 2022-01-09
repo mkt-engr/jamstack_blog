@@ -1,12 +1,9 @@
 import { GetStaticPaths, InferGetStaticPropsType, NextPage } from "next";
-import { VFC } from "react";
 import { useRouter } from "next/router";
-// import ArticleLayout from "../components/blog/ArticleLayout";
 import { getAllArticleIds, getArticleById } from "../lib/articles";
 import { formatYYYYMMDD } from "../lib/dayjs";
 import { highlightByHighlightJs } from "../lib/highlightCode";
 import "highlight.js/styles/hybrid.css";
-import { ARTICLE } from "../@types/microCMS/schema";
 import Layout from "../components/top/Layout";
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
@@ -61,11 +58,6 @@ export const getStaticProps = async ({ params }: ParamType) => {
       },
     };
   }
-  // if (!article) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
 
   const body = highlightByHighlightJs(article.body);
 
