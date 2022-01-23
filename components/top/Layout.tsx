@@ -9,7 +9,7 @@ interface Props {
   title?: string;
   isDisplaySidebar?: boolean;
 }
-const Layout: VFC<Props> = ({ children, title, isDisplaySidebar }) => {
+const Layout: VFC<Props> = ({ children, title, isDisplaySidebar = false }) => {
   // resizeイベントの取得
 
   //TODO:hooksにしたい。（Pure JS：https://coliss.com/articles/build-websites/operation/css/viewport-units-on-mobile.html）

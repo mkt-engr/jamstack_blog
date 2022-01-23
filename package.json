@@ -16,13 +16,8 @@
     "dayjs": "^1.10.7",
     "heroicons": "^1.0.5",
     "highlight.js": "^11.3.1",
-    "highlightjs-line-numbers.js": "^2.8.0",
-    "jsdom": "^19.0.0",
     "next": "12.0.4",
-    "node-fetch": "^3.1.0",
     "postcss": "^8.4.4",
-    "prisma": "^3.6.0",
-    "prismjs": "^1.25.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
@@ -33,7 +28,6 @@
   },
   "devDependencies": {
     "@types/gtag.js": "^0.0.8",
-    "@types/prismjs": "^1.16.6",
     "eslint": "7",
     "eslint-config-next": "12.0.4"
   }

@@ -7,6 +7,7 @@ import { getAllArticles } from "../lib/articles";
 import useSWR from "swr";
 import { ARTICLE } from "../@types/microCMS/schema";
 import { fetcher } from "../lib/swr";
+
 type Props = InferGetStaticPropsType<typeof getStaticProps>;
 
 const Home: NextPage<Props> = ({ staticArticles }) => {

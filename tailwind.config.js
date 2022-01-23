@@ -8,8 +8,6 @@ module.exports = {
       },
     },
   },
-  variants: {
-    translate: ["hover"],
-  },
+  variants: {},
   plugins: [],
 };
