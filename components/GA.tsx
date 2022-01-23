@@ -7,10 +7,12 @@ const GA: VFC = () => {
       {GA_TRACKING_ID && (
         <>
           <Script
+            id="ga_tag_manager"
             strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
           <Script
+            id="ga_tag_function"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
