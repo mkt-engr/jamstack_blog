@@ -10,7 +10,7 @@ interface Props {
   title?: string;
   isDisplaySidebar?: boolean;
 }
-const Layout: VFC<Props> = ({ children, title, isDisplaySidebar = false }) => {
+const Layout: VFC<Props> = ({ children, title }) => {
   useSetFooterPosition();
 
   return (
@@ -23,9 +23,8 @@ const Layout: VFC<Props> = ({ children, title, isDisplaySidebar = false }) => {
         id="js-contentWrapper"
       >
         <Header />
-        <div className="_flex flex-1 px-4 md:px-18 xl:px-36 bg-gray-100 blogContent">
-          <main className="_flex-1">{children}</main>
-          {isDisplaySidebar && <Sidebar />}
+        <div className="flex-1 px-4 md:px-18 xl:px-36 bg-gray-100 blogContent">
+          <main>{children}</main>
         </div>
         <Footer />
       </div>
