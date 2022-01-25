@@ -7,9 +7,13 @@ export const useSetFooterPosition = () => {
     const contentWrapper = document.getElementById("js-contentWrapper");
     const vh = window.innerHeight * 0.01;
     contentWrapper!.style.setProperty("--vh", `${vh}px`);
-    window.addEventListener("resize", () => {
+    const handleFooterPosition = () => {
       const vh = window.innerHeight * 0.01;
       contentWrapper!.style.setProperty("--vh", `${vh}px`);
-    });
+    };
+    window.addEventListener("resize", handleFooterPosition);
+    return () => {
+      window.removeEventListener("resize", handleFooterPosition);
+    };
   }, []);
 };
