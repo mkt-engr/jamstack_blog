@@ -5,7 +5,7 @@ import { formatYYYYMMDD } from "../../lib/dayjs";
 
 type Props = ARTICLE;
 
-const Article: VFC<Props> = (article) => {
+const Card: VFC<Props> = (article) => {
   const { title, createdAt, updatedAt, thumbnail, abstract } = article;
   const url = thumbnail?.url || process.env.NEXT_PUBLIC_NO_IMAGE_URL!;
   return (
@@ -38,4 +38,4 @@ const Article: VFC<Props> = (article) => {
   );
 };
 
-export default Article;
+export default Card;

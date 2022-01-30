@@ -2,15 +2,14 @@ import { ReactNode, VFC, useEffect } from "react";
 import Head from "next/head";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import Sidebar from "../common/Sidebar";
 import styles from "./Layout.module.scss";
 import { useSetFooterPosition } from "../../hooks/useSetFooterPosition";
 interface Props {
   children: ReactNode;
   title?: string;
-  isDisplaySidebar?: boolean;
 }
 const Layout: VFC<Props> = ({ children, title }) => {
+  //フッターの位置調整
   useSetFooterPosition();
 
   return (

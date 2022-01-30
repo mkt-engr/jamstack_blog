@@ -64,7 +64,7 @@ export async function getArticleById(id: string): Promise<ARTICLE> {
   try {
     res = await axios(options);
   } catch (e) {
-    if (axios.isAxiosError(e) && e.response?.status === 400) {
+    if (axios.isAxiosError(e) || e.response?.status === 400) {
       return e.response?.data;
     }
   }

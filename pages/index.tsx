@@ -2,7 +2,7 @@ import { InferGetStaticPropsType, NextPage } from "next";
 import Link from "next/link";
 import { useEffect } from "react";
 import Layout from "../components/top/Layout";
-import Article from "../components/top/Article";
+import Card from "../components/top/Card";
 import { getAllArticles } from "../lib/articles";
 import useSWR from "swr";
 import { ARTICLE } from "../@types/microCMS/schema";
@@ -27,7 +27,7 @@ const Home: NextPage<Props> = ({ staticArticles }) => {
           return (
             <Link href={`/${article.id}`} key={article.id}>
               <a className="block">
-                <Article {...article} />
+                <Card {...article} />
               </a>
             </Link>
           );
