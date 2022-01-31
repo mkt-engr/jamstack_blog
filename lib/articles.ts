@@ -32,11 +32,12 @@ export const getAllArticleIds = async (): Promise<ArticleId[]> => {
   const options: AxiosRequestConfig = {
     url: `${process.env.API_URL}/blog`,
     method: "GET",
-    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! },
+    headers: { "X-MICROCMS-API-KEY": process.env.API_KEY! }, //!をつけてnullでないことを明示する
   };
 
   const res = await axios(options);
   const articles: ARTICLE[] = res.data.contents;
+  //IDだけを抽出して返却
   return articles.map((article) => {
     return {
       params: {
@@ -64,7 +65,7 @@ export async function getArticleById(id: string): Promise<ARTICLE> {
   try {
     res = await axios(options);
   } catch (e) {
-    if (axios.isAxiosError(e) || e.response?.status === 400) {
+    if (axios.isAxiosError(e) && e.response?.status === 404) {
       return e.response?.data;
     }
   }

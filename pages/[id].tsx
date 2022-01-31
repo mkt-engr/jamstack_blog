@@ -35,7 +35,7 @@ const Blog: NextPage<Props> = ({ article }) => {
 
 export default Blog;
 
-// 静的生成のためのパスを指定します
+// 静的生成のためのパスを指定する(ビルド時に実行)
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getAllArticleIds();
   return { paths, fallback: true };
@@ -47,9 +47,12 @@ interface ParamType {
   };
 }
 
+//params.idでダイナミックルートの値が取得できる([id].tsxの[id]の部分)
 export const getStaticProps = async ({ params }: ParamType) => {
+  //記事のIDを元に記事を取得(params.idのidは[id].tsxのidと対応している)
   const article = await getArticleById(params.id);
 
+  //記事が取得できなかった場合はトップページへリダイレクトする
   if (!article) {
     return {
       redirect: {
@@ -59,6 +62,7 @@ export const getStaticProps = async ({ params }: ParamType) => {
     };
   }
 
+  //シンタックスハイライトをつける
   const body = highlightByHighlightJs(article.body);
 
   return {
