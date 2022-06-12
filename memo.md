@@ -123,3 +123,30 @@ PC
 - Zenn で記事にする
 - 目次
 - 検索機能
+
+# React バージョンアップ
+
+17 から 18 にする
+https://nextjs.org/docs/upgrading
+
+```
+npm install react@latest react-dom@latest
+```
+
+なんかエラー出た
+
+```
+./node_modules/@next/react-dev-overlay/lib/client.js
+Module build failed: Error: ENOENT: no such file or directory, open '/Users/makitomori/Documents/dev/jamstack_blog/node_modules/@next/react-dev-overlay/lib/client.js'
+```
+
+上のやつは`npm run dev`で出なくなった。代わりに gtag のエラーが出た
+
+Google Analytics のコンポーネントを\_document.tsx から\_app.tsx に移したことで上記のエラーは解決。
+https://bytemeta.vip/index.php/repo/KushibikiMashu/my-tech-blog/issues/4
+
+次はまた違うエラーが出た。
+
+```
+react-dom.development.js?ac89:86 Warning: You are importing hydrateRoot from "react-dom" which is not supported. You should instead import it from "react-dom/client".
+```
